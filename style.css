@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFF9E6, #FFD93D);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: -20px;
+    border-radius: 2px;
+    animation: confettiFall linear infinite;
+}
+
+.confetti-piece:nth-child(1)  { left: 5%;  background: #FFD93D; animation-delay: 0s;   animation-duration: 6s; }
+.confetti-piece:nth-child(2)  { left: 15%; background: #FF6B6B; animation-delay: 1s;   animation-duration: 7s; }
+.confetti-piece:nth-child(3)  { left: 25%; background: #4ECDC4; animation-delay: 2s;   animation-duration: 5s; }
+.confetti-piece:nth-child(4)  { left: 35%; background: #FFE66D; animation-delay: 0.5s; animation-duration: 8s; }
+.confetti-piece:nth-child(5)  { left: 45%; background: #FF8C42; animation-delay: 1.5s; animation-duration: 6s; }
+.confetti-piece:nth-child(6)  { left: 55%; background: #FFD93D; animation-delay: 2.5s; animation-duration: 7s; }
+.confetti-piece:nth-child(7)  { left: 65%; background: #FF6B6B; animation-delay: 3s;   animation-duration: 5s; }
+.confetti-piece:nth-child(8)  { left: 75%; background: #4ECDC4; animation-delay: 0.8s; animation-duration: 8s; }
+.confetti-piece:nth-child(9)  { left: 85%; background: #FFE66D; animation-delay: 1.8s; animation-duration: 6s; }
+.confetti-piece:nth-child(10) { left: 95%; background: #FF8C42; animation-delay: 2.8s; animation-duration: 7s; }
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(105vh) rotate(720deg);
+        opacity: 0.3;
+    }
+}
+
+.card {
+    position: relative;
+    z-index: 2;
+    background: white;
+    border-radius: 30px;
+    padding: 50px 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(255, 140, 66, 0.3);
+    animation: cardAppear 1s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.mayo-jar {
+    position: relative;
+    width: 140px;
+    height: 180px;
+    margin: 0 auto 30px;
+    animation: jarBounce 2s ease-in-out infinite;
+}
+
+@keyframes jarBounce {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+.lid {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -55px;
+    width: 110px;
+    height: 35px;
+    background: #2E5F9E;
+    border-radius: 10px 10px 5px 5px;
+    z-index: 3;
+}
+
+.jar-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -60px;
+    width: 120px;
+    height: 150px;
+    background: #F5F0DC;
+    border-radius: 15px 15px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.label {
+    width: 100px;
+    height: 80px;
+    background: #FFD93D;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #E6A500;
+}
+
+.label-text {
+    font-weight: bold;
+    font-size: 12px;
+    color: #8B4513;
+    letter-spacing: 1px;
+}
+
+.label-heart {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    margin-top: 8px;
+    background: #FF6B6B;
+    transform: rotate(-45deg);
+    animation: heartBeat 1s ease-in-out infinite;
+}
+
+.label-heart::before,
+.label-heart::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #FF6B6B;
+    border-radius: 50%;
+}
+
+.label-heart::before {
+    top: -7px;
+    left: 0;
+}
+
+.label-heart::after {
+    top: 0;
+    left: 7px;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.3); }
+}
+
+.shine {
+    position: absolute;
+    top: 40px;
+    left: 20%;
+    width: 15px;
+    height: 60px;
+    background: white;
+    opacity: 0.6;
+    border-radius: 50%;
+    transform: rotate(-15deg);
+    z-index: 2;
+}
+
+.title {
+    font-size: 32px;
+    color: #8B4513;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.title span {
+    display: inline-block;
+    animation: textPop 0.6s ease backwards;
+}
+
+.title span:nth-child(1) { animation-delay: 0.3s; }
+.title span:nth-child(2) { animation-delay: 0.5s; }
+.title span:nth-child(3) { animation-delay: 0.7s; }
+.title span:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes textPop {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.title .highlight {
+    color: #FF6B6B;
+    font-weight: bold;
+    font-size: 38px;
+    animation: textPop 0.6s ease 0.9s backwards,
+               pulse 2s ease-in-out 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #A0522D;
+    margin-bottom: 25px;
+    animation: fadeInUp 0.8s ease 1.2s backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.wishes {
+    background: #FFF9E6;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 25px 0;
+    text-align: left;
+    border-left: 5px solid #FFD93D;
+    animation: fadeInUp 0.8s ease 1.5s backwards;
+}
+
+.wishes p {
+    color: #8B4513;
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 17px;
+}
+
+.wishes ul {
+    list-style: none;
+}
+
+.wishes li {
+    color: #6B3410;
+    padding: 6px 0;
+    font-size: 16px;
+    animation: slideIn 0.5s ease backwards;
+}
+
+.wishes li:nth-child(1) { animation-delay: 1.8s; }
+.wishes li:nth-child(2) { animation-delay: 2s; }
+.wishes li:nth-child(3) { animation-delay: 2.2s; }
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.cake {
+    position: relative;
+    width: 120px;
+    height: 100px;
+    margin: 30px auto;
+    animation: fadeInUp 0.8s ease 2s backwards;
+}
+
+.cake-layer {
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    border-radius: 8px;
+}
+
+.cake-layer:nth-child(1) {
+    bottom: 0;
+    width: 120px;
+    height: 30px;
+    background: #FFB6C1;
+}
+
+.cake-layer:nth-child(2) {
+    bottom: 28px;
+    width: 100px;
+    height: 28px;
+    margin-left: -50px;
+    background: #FFF5E1;
+}
+
+.cake-layer:nth-child(3) {
+    bottom: 54px;
+    width: 80px;
+    height: 26px;
+    margin-left: -40px;
+    background: #FFB6C1;
+}
+
+.candle {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    margin-left: -4px;
+    width: 8px;
+    height: 25px;
+    background: repeating-linear-gradient(
+        45deg,
+        #FF6B6B,
+        #FF6B6B 4px,
+        white 4px,
+        white 8px
+    );
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.flame {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    margin-left: -7px;
+    width: 14px;
+    height: 20px;
+    background: orange;
+    border-radius: 50%;
+    animation: flicker 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+.signature {
+    font-size: 18px;
+    color: #A0522D;
+    margin-top: 25px;
+    font-style: italic;
+    animation: fadeInUp 0.8s ease 2.5s backwards;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 30px 20px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .title .highlight {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+}
